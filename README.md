@@ -12,10 +12,14 @@
 
 ## example
 ### 원본 (문자열 주입 전)
-![주입전](https://github.com/kyj9447/imageNoiserAndValidator/blob/main/original.png)
+<img src="https://github.com/kyj9447/imageNoiserAndValidator/blob/main/original.png" width=600px>
 
 ### 주입 후 (문자열 "!Validation:kyj9447@mailmail.com\n" 주입됨)
-![주입후](https://github.com/kyj9447/imageNoiserAndValidator/blob/main/signed_original.png)
+<img src="https://github.com/kyj9447/imageNoiserAndValidator/blob/main/signed_original.png" width=600px>
 
 ### Validation 결과
-![image](https://github.com/kyj9447/imageNoiserAndValidator/assets/122734245/d6eaba0b-c76b-4229-9dbd-6dc5f0b23995)
+<img src="https://github.com/kyj9447/imageNoiserAndValidator/assets/122734245/d6eaba0b-c76b-4229-9dbd-6dc5f0b23995" width=600px>
+
+## etc
+추후 (클라이언트)공개키 암호화 -> (서버)개인키 복호화 등의 방법으로 이미지 무편집 보증 등 기능 구현 예정
+
