@@ -182,4 +182,5 @@ def add_hidden_bit(image_path, hiddenBinary):
 # 이미지 경로 + 주입할 String => String 주입된 Image
 def signImage(image_path, hiddenString) :
     hiddenBinary = binaryProvider(hiddenString)
-    add_hidden_bit(image_path, hiddenBinary).save("signed_" + image_path)
+    signedImage = add_hidden_bit(image_path, hiddenBinary)
+    return signedImage

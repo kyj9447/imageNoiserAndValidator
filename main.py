@@ -14,14 +14,19 @@ if choice == "1":
         print("입력이 없습니다. 기본값으로 설정합니다. (!Validation:kyj9447@mailmail.com)")
         string = "!Validation:kyj9447@mailmail.com"
 
-    signImage(image, string+"\n") # string 끝에 줄바꿈 추가
-    print("문자열 주입이 완료되었습니다.\nsigned_"+image)
+    signedImage = signImage(image, string+"\n") # string 끝에 줄바꿈 추가
+    signedImage.save("signed_"+image)
+    print("signed_"+image+ " 파일이 작성되었습니다.")
 
 elif choice == "2":
-    validation = validateImage("signed_original.png")
+
+    image = "signed_original.png"
+
+    validation = validateImage(image)
     with open("validation_result.txt", "w") as file:
         file.write(validation)
     print("validation_result.txt 파일이 작성되었습니다.")
     # print(validation)
+    
 else:
     print("잘못된 입력입니다.")
