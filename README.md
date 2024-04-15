@@ -19,7 +19,17 @@
 <img src="https://github.com/kyj9447/imageNoiserAndValidator/blob/main/signed_original.png" width=600px>
 
 ### Validation 결과
-<img src="https://github.com/kyj9447/imageNoiserAndValidator/assets/122734245/06ea8976-7c11-4dce-a873-6b096c2ac8f4" width=600px>
+START-VALIDATION
+
+문자열 (반복)
+
+...
+
+문자열 (일부 잘림)
+
+END-VALIDATION
+
+<img src="https://github.com/kyj9447/imageSignerAndValidator/assets/122734245/48da75e9-df58-4326-9b42-965cc3e7d6a2" width=600px>
 
 ## etc
 추후 (클라이언트)공개키 암호화 -> (서버)개인키 복호화 등의 방법으로 이미지 원본 검증 등 기능 구현 예정
