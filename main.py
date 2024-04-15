@@ -19,6 +19,9 @@ if choice == "1":
 
 elif choice == "2":
     validation = validateImage("signed_original.png")
-    print(validation)
+    with open("validation_result.txt", "w") as file:
+        file.write(validation)
+    print("validation_result.txt 파일이 작성되었습니다.")
+    # print(validation)
 else:
     print("잘못된 입력입니다.")

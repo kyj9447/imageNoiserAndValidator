@@ -39,7 +39,6 @@ def read_hidden_bit(image_path):
             else:
                 hiddenBinary += "0"
     
-
     return hiddenBinary
 
 # main
