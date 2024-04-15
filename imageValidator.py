@@ -43,6 +43,7 @@ def read_hidden_bit(image_path):
     return hiddenBinary
 
 # main
-resultBinary = read_hidden_bit("signed_original.png")
-resultString = binary_to_string(resultBinary)
-print(resultString)
+def validateImage(image_path):
+    resultBinary = read_hidden_bit(image_path)
+    resultString = binary_to_string(resultBinary)
+    return resultString

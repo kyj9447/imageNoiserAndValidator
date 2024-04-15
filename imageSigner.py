@@ -1,34 +1,41 @@
 from PIL import Image
 
-# String -> Binary
-def str_to_binary(string):
-    # 빈 리스트 생성
-    binarys = []
-     
-    # String 내 각 char에 대한 반복
-    for char in string:
-        # 각 char를 8비트로 변환하여 리스트에 추가
-        binarys.append(bin(ord(char))[2:].zfill(8))
-         
-    # 리스트를 하나의 문자열로 결합
-    return ''.join(binarys)
+class binaryProvider:
 
-def next_bit():
-    global hiddenBinaryIndex, hiddenBinaryIndexMax
+    # 생성자
+    def __init__(self, hiddenString):
+        self.hiddenbinary = self.str_to_binary(hiddenString)
+        self.hiddenbinaryIndex = 0
+        self.hiddenbinaryIndexMax = len(self.hiddenbinary)
 
-    # hiddenBinary의 인덱스가 최대값에 도달하면 0으로 초기화
-    if hiddenBinaryIndex >= hiddenBinaryIndexMax:
-        hiddenBinaryIndex = 0
+    # String -> Binary[]
+    def str_to_binary(self,string):
+        # 빈 리스트 생성
+        binarys = []
+        
+        # String 내 각 char에 대한 반복
+        for char in string:
+            # 각 char를 8비트로 변환하여 리스트에 추가
+            binarys.append(bin(ord(char))[2:].zfill(8))
+            
+        # 리스트를 하나의 문자열로 결합
+        return ''.join(binarys)
 
-    # hiddenBinary의 해당 인덱스의 비트를 가져옴
-    bit = hiddenBinary[hiddenBinaryIndex]
+    # 다음 비트를 가져오는 함수
+    def next_bit(self):
+        # hiddenBinary의 인덱스가 최대값에 도달하면 0으로 초기화
+        if self.hiddenbinaryIndex >= self.hiddenbinaryIndexMax:
+            self.hiddenbinaryIndex = 0
 
-    # hiddenBinary의 인덱스 증가
-    hiddenBinaryIndex += 1
+        # hiddenBinary의 해당 인덱스의 비트를 가져옴
+        bit = self.hiddenbinary[self.hiddenbinaryIndex]
 
-    return int(bit)
+        # hiddenBinary의 인덱스 증가
+        self.hiddenbinaryIndex += 1
 
-def add_hidden_bit(image_path):
+        return int(bit)
+
+def add_hidden_bit(image_path, hiddenBinary):
     # 이미지 열기
     img = Image.open(image_path)
 
@@ -61,7 +68,7 @@ def add_hidden_bit(image_path):
             add_direction = 1 if targetColorValue < 127 else -1
 
             # 해당 index의 hiddenBinary값
-            bit = next_bit()
+            bit = hiddenBinary.next_bit()
             #print(bit)
 
             # 해당 픽셀의 RGB 값을 수정
@@ -81,15 +88,11 @@ def add_hidden_bit(image_path):
             # 이미지의 해당 픽셀에 수정된 RGB 값을 설정
             img.putpixel((x,y), (r, g, b))
 
-    # 수정된 이미지를 저장
-    img.save("signed_" + image_path)
+    # 수정된 이미지를 return
+    return img
 
 # main
-hiddenString = "!Validation:kyj9447@mailmail.com\n"
-hiddenBinary = str_to_binary(hiddenString)
-hiddenBinaryIndex = 0
-hiddenBinaryIndexMax = len(hiddenBinary)
-
-print("주입할 String : \n"+hiddenString)
-
-add_hidden_bit("original.png")
+# 이미지 경로 + 주입할 String => String 주입된 Image
+def signImage(image_path, hiddenString) :
+    hiddenBinary = binaryProvider(hiddenString)
+    add_hidden_bit(image_path, hiddenBinary).save("signed_" + image_path)
