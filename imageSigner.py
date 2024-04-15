@@ -8,14 +8,16 @@ class binaryProvider:
         self.hiddenbinaryIndex = 0
         self.hiddenbinaryIndexMax = len(self.hiddenbinary)
 
+        # 시작 문자열
         self.startString = "START-VALIDATION\n"
         self.startBinary = self.str_to_binary(self.startString)
         self.startBinaryIndex = 0
         self.startBinaryIndexMax = len(self.startBinary)
 
+        # 종료 문자열
         self.endString = "\nEND-VALIDATION"
         self.endBinary = self.str_to_binary(self.endString)
-        # 마지막 문자열은 마지막 비트부터 역순으로 입력
+        # 종료 문자열은 마지막 비트부터 역순으로 입력
         self.endBinaryIndex = len(self.endBinary)-1
         self.endBinaryIndexMin = 0
 
@@ -58,8 +60,10 @@ class binaryProvider:
 
         return int(bit)
     
+    # 다음 비트를 가져오는 함수 2
+    # endBinary의 비트를 역순으로 가져옴
     def next_end(self):
-        # endBinary의 인덱스가 최소값에 도달하면 0으로 초기화
+        # endBinary의 인덱스가 최소값에 도달하면 None을 반환하여 종료 알림
         if self.endBinaryIndex == self.endBinaryIndexMin:
             return None
 
