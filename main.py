@@ -14,7 +14,7 @@ if choice == "1":
         print("입력이 없습니다. 기본값으로 설정합니다. (!Validation:kyj9447@mailmail.com)")
         string = "!Validation:kyj9447@mailmail.com"
 
-    signedImage = signImage(image, string+"\n") # string 끝에 줄바꿈 추가
+    signedImage = signImage(image, string) # string 끝에 줄바꿈 추가
     signedImage.save("signed_"+image)
     print("signed_"+image+ " 파일이 작성되었습니다.")
 
