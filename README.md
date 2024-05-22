@@ -5,11 +5,26 @@
 
 => 육안으로 인식이 어려운 수준의 노이즈로 문자열을 이미지에 주입함
 
+```python
+from imageSigner import signImage
+string = "주입할 문자열"
+image = "주입대상 이미지 경로"
+
+signedImage = signImage(image, string+"\n")
+```
+
 ## imageValidator
 #### validateImage("이미지 경로/이름") => 이미지에 주입된 문자열을 return
 이미지파일의 RGB값(0~255) 중 중간값(127)에서 가장 먼 색상의 값의 홀,짝을 문자열의 binary로 인식
 
 => imageSigner로 주입한 문자열을 추출가능
+
+```python
+from imageValidator import validateImage
+image = "추출대상 이미지 경로"
+
+validation = validateImage(image)
+```
 
 ## example
 ### 원본 (문자열 주입 전)
@@ -22,8 +37,6 @@
 START-VALIDATION
 
 문자열 (반복)
-
-...
 
 문자열 (일부 잘림)
 
