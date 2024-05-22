@@ -41,8 +41,17 @@ def read_hidden_bit(image_path):
     
     return hiddenBinary
 
+def deduplicate(arr):
+    deduplicated = []
+    for i in range(len(arr)):
+        if i == 0 or arr[i] != arr[i-1]:
+            deduplicated.append(arr[i])
+    return deduplicated
+
 # main
 def validateImage(image_path):
     resultBinary = read_hidden_bit(image_path)
     resultString = binary_to_string(resultBinary)
-    return resultString
+    deduplicated = deduplicate(resultString.split("\n"))
+    deduplicatedJoined = "\n".join(deduplicated)
+    return deduplicatedJoined
